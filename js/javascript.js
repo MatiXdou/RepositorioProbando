@@ -12,7 +12,7 @@ $("#formulario").submit(
         var nombre = $("#nombre").val();
         var edad = $("#edad").val();
         var genero = $("#genero").val();
-
+        var valid = false;
 
 
         /*Validaciones*/
@@ -20,10 +20,12 @@ $("#formulario").submit(
             event.preventDefault();
             $("#error1").html("");
             console.log('rut validado correctamente.')
+            valid=true;
         } else {
             event.preventDefault();
             $("#error1").html("<p>El rut debe tener entre 9 y 10 caracteres.</p>");
             $("#rut").focus();
+            valid=false;
             return;
         }
         
@@ -32,10 +34,12 @@ $("#formulario").submit(
             event.preventDefault();
             $("#error2").html("");
             console.log('nombre validado correctamente.')
+            valid=true;
         } else {
             event.preventDefault();
             $("#error2").html("<p>El nombre debe tener entre 3 y 20 caracteres.</p>");
             $("#nombre").focus();
+            valid=false;
             return;
         }
     
@@ -44,10 +48,12 @@ $("#formulario").submit(
             event.preventDefault();
             $("#error3").html("");
             console.log('edad validada correctamente.')
+            valid=true;
         } else {
             event.preventDefault();
             $("#error3").html("<p>La edad debe ser entre 18 a 35 años.</p>");
             $("#edad").focus();
+            valid=false;
             return;
         }
     
@@ -56,14 +62,20 @@ $("#formulario").submit(
             event.preventDefault();
             $("#error4").html("");
             console.log('genero validado correctamente.')
+            valid=true;
         } else {
             event.preventDefault();
             $("#error4").html("<p>Debe seleccionar un genero.</p>");
             $("#genero").focus();
+            valid=false;
             return;
         }
 
-    
+        if (valid==true) {
+            window.location.href = "https://matixdou.github.io/Experiencia1_CastanedaNeira_001D/";
+        } else {
+            event.preventDefault();
+            console.log("No se pudo iniciar sesion.")
+        }
     }
 );
-
