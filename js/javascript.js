@@ -72,7 +72,7 @@ $("#formulario").submit(
         }
 
         if (valid==true) {
-            window.location.href = "https://matixdou.github.io/Experiencia1_CastanedaNeira_001D/";
+            window.location.href = "https://www.google.com/";
         } else {
             event.preventDefault();
             console.log("No se pudo iniciar sesion.")
