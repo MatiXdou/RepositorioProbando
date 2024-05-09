@@ -1,33 +1,192 @@
-body{
-    background-color: rgb(255, 152, 152);
+html, body{
+    height: 100%;
 }
 
-#formulario{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 347px;
+
+.barra-navegacion{
+    background-color: rgb(255, 72, 0);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    text-align: right;
 }
 
-#contenedor-form{
-    padding: 30px 30px 70px 30px;
-    background-color: white;
+.links-barra-nav{
+    justify-content: right
 }
 
-#boton1{
-    float: right;
-    width: 70px;
+.links-barra-nav ul{
+    gap: 50px;
 }
 
-#genero{
-    width: 100px;
+.links-barra-nav a{
+    padding: 15px 0 0 0;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
 }
 
-p{
-    margin: 5px 0 0 0;
-    border: 1px solid rgba(255, 0, 0, 0.255);
-    border-radius: 5px;
-    padding: 5px;
-    background-color: rgba(255, 55, 55, 0.201);
+.boton-desplegable{
+    justify-content: right;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.logo img{
+    float: left;
+    height: 70px;
+    width: 160px;
+}
+
+nav a :hover{
+    color:rgb(255, 172, 172)
+}
+
+.container-principal{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+main{
+    flex: 1;
+}
+
+.main{
+    height: 100%;
+}
+
+.footer{
+    align-items: center;
+    background-color: rgb(31, 31, 31);
+    color: rgb(209, 209, 209);
+    padding-top: 3px;
+    padding-bottom: 10px;
+}
+
+.nombres{
+    display: flex;
+}
+
+.nombres ul{
+    margin-top: 3px;
+}
+
+.copy {
+    text-align: center;
+}
+
+.rrss{
+    display: flex;
+    justify-content: center;
+    margin: 7px 0 5px 0;
+}
+
+.rrss img{
+    width: 45px;   
+}
+
+.objetivos-sweb{
+    margin-top: 3%;
+    text-align: center;
+}
+
+.objetivos-sweb p{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.mision-vision{
+    display: flex;
+    text-align: center;
+}
+
+.carrusel{
+    width: 200px;
+    padding: 20px 0 20px 0;
+    margin: 0 auto;
+}
+
+.objetivo-proyectoweb{
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
+
+.objetivo-proyectoweb p{
+    margin: 0 auto;
+    font-size: 13px;
+    width: 100%;
+}
+
+.video_link{
+    margin-top: 100px;
+}
+
+.video_link iframe{
+    width: 250px;
+    height: 445px;
+}
+
+.galeria{
+    display: flex;
+    padding: 10px 20px;
+}
+
+.foto:hover{
+    border: 1px solid lightcoral;
+    transform: rotate(-3deg);
+    
+}
+
+.pie{
+    text-align: center;
+    text-shadow: 2px 2px 5px purple;
+    padding: 10px;
+}
+
+
+.foto{
+    align-content: center;
+}
+
+
+.foto-1 img{
+    display: flex;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.foto-2 img{
+    display: flex;
+    width: 125px;
+    margin: 0 auto;
+}
+
+.foto-3 img{
+    display: flex;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.foto-4 img{
+    display: flex;
+    width: 250px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.foto-5 img{
+    display: flex;
+    width: 120px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.foto-6 img{
+    display: flex;
+    width: 115px;
+    margin: 0 auto;
+    margin-top: 25px;
 }
