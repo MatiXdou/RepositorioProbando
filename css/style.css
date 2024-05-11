@@ -54,9 +54,6 @@ main{
     flex: 1;
 }
 
-.main{
-    height: 100%;
-}
 
 .footer{
     align-items: center;
@@ -103,21 +100,29 @@ main{
     text-align: center;
 }
 
-.carrusel{
-    width: 250px;
-    padding: 20px 0 20px 0;
-    margin: 0 auto;
+.carrusel1{
+    min-width: 220px;
 }
 
-.objetivo-proyectoweb{
+.carrusel2{
+    padding: 20px 0 20px 0;
+    margin: 0 auto;
+    max-width: 242px;
+}
+
+.objetivo-proyectoweb1{
     text-align: center;
     padding: 10px 0 10px 0;
+    margin: 0 auto;
+    min-width: 200px;
+}
+
+.objetivo-proyectoweb2{
+    min-width: 170px;
 }
 
 .objetivo-proyectoweb p{
-    margin: 0 auto;
-    font-size: 13px;
-    width: 100%;
+    font-size: 17px;
 }
 
 .video_link{
