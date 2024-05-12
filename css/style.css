@@ -51,7 +51,10 @@ nav a :hover{
 }
 
 main{
+    display: flex;
+    flex-direction: row;
     flex: 1;
+    align-items: center;
 }
 
 
@@ -59,8 +62,7 @@ main{
     align-items: center;
     background-color: rgb(31, 31, 31);
     color: rgb(209, 209, 209);
-    padding-top: 3px;
-    padding-bottom: 10px;
+    padding: 1px 0 1px 0;
 }
 
 .nombres{
@@ -82,7 +84,7 @@ main{
 }
 
 .rrss img{
-    width: 45px;   
+    width: 25px;   
 }
 
 .objetivos-sweb{
@@ -101,28 +103,25 @@ main{
 }
 
 .carrusel1{
-    min-width: 317px;
+    min-width: 300px;
 }
 
 .carrusel2{
-    padding: 20px 0 20px 0;
+    padding: 10px 0 10px 0;
     margin: 0 auto;
-    max-width: 242px;
+    max-width: 400px;
 }
 
 .objetivo-proyectoweb1{
     text-align: center;
     padding: 10px 0 10px 0;
     margin: 0 auto;
-    min-width: 200px;
+    min-width: 330px;
 }
 
 .objetivo-proyectoweb2{
     min-width: 170px;
-}
-
-.objetivo-proyectoweb p{
-    font-size: 17px;
+    font-size: 23px;
 }
 
 .video_link{
