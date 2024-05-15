@@ -176,10 +176,44 @@ main{
     padding: 25px 0 0 0;
 }
 
+.titulo-contacto{
+    text-align: center;
+    padding: 0 0 10px 0;
+}
+
 #formulario-contacto{
-    max-width: 300px;
+    margin: 0 auto;
+    text-align: left;
+    max-width: 365px;
+    padding: 0 0 30px 0;
+}
+
+.titulo-suscripcion{
+    text-align: center;
+    padding: 40px 0 0 0;
 }
 
 #formulario-suscripcion{
-    max-width: 300px;
+    margin: 0 auto;
+    text-align: left;
+    max-width: 365px;
+    padding: 0 0 30px 0;
+}
+
+#boton1{
+    float: right;
+    max-width: 80px;
+    margin: 0 0 30px 0;
+}
+
+#motivo-contacto{ /*queja / comentario / sugerencia / otro*/
+    max-width: 100px;
+}
+
+#genero{
+    max-width: 100px;
+}
+
+#edad{
+    max-width: 182px;
 }
