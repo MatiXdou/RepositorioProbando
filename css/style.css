@@ -175,3 +175,11 @@ main{
     margin: 0 auto;
     padding: 25px 0 0 0;
 }
+
+#formulario-contacto{
+    max-width: 300px;
+}
+
+#formulario-suscripcion{
+    max-width: 300px;
+}

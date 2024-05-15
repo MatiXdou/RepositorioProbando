@@ -122,8 +122,39 @@
             </main>
 
 
-
-
+            <form id="formulario-suscripcion">
+                <div id="contenedor-form" class="container-fluid border border-2 border-dark-subtle shadow-lg rounded-4">
+                    <div class="form-group campo">
+                        <label for="rut">Rut: </label>
+                        <input type="text" id="rut" class="form-control form-control-sm border border-dark-subtle" required>
+                        <div id="error1" class="errores"></div>
+                    </div><br>
+                    <div class="form-group campo">
+                        <label for="nombre">Nombre: </label>
+                        <input type="text" id="nombre" class="form-control form-control-sm border border-dark-subtle" required>
+                        <div id="error2" class="errores"></div>
+                    </div><br>
+                    <div class="form-group campo">
+                        <label for="edad">Edad: </label>
+                        <input type="number" id="edad" class="form-control form-control-sm border border-dark-subtle" required>
+                        <div id="error3" class="errores"></div>
+                    </div><br>
+                    <div class="form-group campo">
+                        <label for="genero">Genero: </label>
+                        <select id="genero" class="form-control form-control-sm border border-dark-subtle" required>
+                            <option value="defoption">--Seleccionar</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                        </select>
+                        <div id="error4" class="errores"></div>
+                    </div><br>
+                    
+        
+                    <div class="form-group">
+                        <button type="submit" id="boton1" class="form-control border border-dark-subtle ">Enviar</button>
+                    </div>
+                </div>
+            </form>
 
 
             <footer>
