@@ -102,22 +102,7 @@ main{
     margin: 0 0 60px 0;
 }
 
-.oweb{
-    margin: 0 auto;
-    min-width: 200px;
-}
-
-.empresa{
-    margin: 0 auto;
-    min-width: 200px;
-}
-
-.mision{
-    margin: 0 auto;
-    min-width: 200px;
-}
-
-.vision{
+.objetivo{
     margin: 0 auto;
     min-width: 200px;
 }
@@ -148,64 +133,45 @@ main{
     margin: 30px 0 30px 0;
 }
 
+.video_link a{
+    color: rgb(116, 116, 255);
+    text-decoration-line: underline;
+}
+
 .galeria{
     display: flex;
     padding: 10px 20px;
 }
 
-.foto:hover{
+.cuadro-foto{
+    min-width: 300px;
+    margin: 0 auto;
+}
+
+.foto{
     border: 1px solid lightcoral;
-    transform: rotate(-3deg);
+    transform: perspective(10px)  ;
+    text-align: center;
     
 }
 
-.pie{
+.pie p{
     text-align: center;
-    text-shadow: 2px 2px 5px purple;
     padding: 10px;
 }
 
-
-.foto{
-    align-content: center;
+.foto .foto-img{
+    backface-visibility: hidden;
+    border-radius: 10px;
+    transition: 5s;
+    padding: 0 0 5px 0;
+    transform: perspective(10px) rotateY(0deg);
+    box-shadow: 0 5px 10px #000;
 }
 
-
-.foto-1 img{
+.foto-img img{
     display: flex;
-    width: 200px;
+    height: 350px;
     margin: 0 auto;
-}
-
-.foto-2 img{
-    display: flex;
-    width: 125px;
-    margin: 0 auto;
-}
-
-.foto-3 img{
-    display: flex;
-    width: 200px;
-    margin: 0 auto;
-}
-
-.foto-4 img{
-    display: flex;
-    width: 250px;
-    margin: 0 auto;
-    margin-top: 25px;
-}
-
-.foto-5 img{
-    display: flex;
-    width: 120px;
-    margin: 0 auto;
-    margin-top: 25px;
-}
-
-.foto-6 img{
-    display: flex;
-    width: 115px;
-    margin: 0 auto;
-    margin-top: 25px;
+    padding: 25px 0 0 0;
 }
