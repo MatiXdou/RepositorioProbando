@@ -45,14 +45,14 @@ $(document).ready(function() {
         }
 
 
-        if (whyContacto.length >=10 && apellido.length <= 200) {
+        if (whyContacto.length >=10 && whyContacto.length <= 200) {
             event.preventDefault();
             $("#error5").html("");
             console.log('Mensaje contacto validado correctamente.')
         } else {
             event.preventDefault();
             $("#error5").html("<p>El mensaje debe contener entre 10 y 200 caracteres.</p>");
-            $("#apellido").focus();
+            $("#why-contacto").focus();
             return;
         }
 
@@ -115,7 +115,7 @@ $("#formulario-suscripcion").submit(function(event) {
 
 
     
-    alert("¡Se ha enviado tu mensaje correctamente!");
+    alert("¡Usted se ha suscrito exitosamente.!");
     $("#nombre").val("");
     $("#email").val("");
     $("#edad").val("");
