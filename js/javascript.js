@@ -2,17 +2,19 @@ $(document).ready(function() {
     var nombre;
     var apellido;
     var email;
+    var emailCorrecto;
     var motivoContacto;
     var whyContacto;
     var formato;
     var dns;
+    
 
 
 
     /* Validaciones individuales */
 
     $("#nombre").blur(function(){
-        nombre = $("#nombre").val();
+        nombre = $("#nombre").val().trim();
         if (nombre.length >=3 && nombre.length <= 20) {
             $("#error1").html("");
             console.log('nombre validado correctamente.');
@@ -24,7 +26,7 @@ $(document).ready(function() {
 
 
     $("#apellido").blur(function(){
-        apellido = $("#apellido").val();
+        apellido = $("#apellido").val().trim();
         if (apellido.length >=3 && apellido.length <= 20) {
             $("#error2").html("");
             console.log('apellido validado correctamente.')
@@ -36,6 +38,7 @@ $(document).ready(function() {
 
 
     $("#email").blur(function(){
+        emailCorrecto=false;
         email = $("#email").val();
         if(email.length > 0){
             $.get("https://www.disify.com/api/email/" + email,
@@ -46,24 +49,29 @@ $(document).ready(function() {
                         if (dns==true) {
                             $("#error3").html("");
                             console.log('email validado correctamente.')
+                            emailCorrecto=true;
                         } else {
                             $("#error3").html('<p>El email no tiene un dominio valido.</p>');
+                            $("#email").focus();
+                            emailCorrecto=false;
                             return;
                         }
                     } else {
                         $("#error3").html('<p>El email no tiene un formato valido.</p>');
-                            return;
-                    }
-                    
+                        $("#email").focus();
+                        emailCorrecto=false;
+                        return;
+                    }                    
                 });
         } else{
             $("#error3").html('<p>Debe rellenar este campo.</p>');
+            $("#email").focus();
             return;
         }
-        
+        console.log("email: "+emailCorrecto)
 
     })
-
+    
 
     $("#motivo-contacto").click(function(){
         motivoContacto = $("#motivo-contacto").val();
@@ -78,7 +86,7 @@ $(document).ready(function() {
 
 
     $("#why-contacto").blur(function(){
-        whyContacto = $("#why-contacto").val();
+        whyContacto = $("#why-contacto").val().trim();
         if (whyContacto.length >=10 && whyContacto.length <= 200) {
             $("#error5").html("");
             console.log('Mensaje contacto validado correctamente.')
@@ -108,7 +116,6 @@ $(document).ready(function() {
             console.log('Genero validado correctamente.')
         } else {
             $("#error4").html("<p>Debe seleccionar un genero.</p>");
-            $("#genero").focus();
             return;
         }
     });
@@ -116,96 +123,81 @@ $(document).ready(function() {
 
 
     /* Validaciones al enviar formulario */
-
-    $("#formulario-contacto").submit(function(event) {
+    $("#formulario-contacto").submit(function(event){
         /*declarar variables*/
-        nombre = $("#nombre").val();
-        apellido = $("#apellido").val();
+        nombre = $("#nombre").val().trim();
+        apellido = $("#apellido").val().trim();
         email = $("#email").val();
         motivoContacto = $("#motivo-contacto").val();
-        whyContacto = $("#why-contacto").val();
+        whyContacto = $("#why-contacto").val().trim();
 
         /*Validaciones*/
         if (nombre.length >=3 && nombre.length <= 20) {
-            event.preventDefault();
             $("#error1").html("");
             console.log('nombre validado correctamente.')
         } else {
-            event.preventDefault();
             $("#error1").html("<p>El nombre debe tener entre 3 y 20 caracteres.</p>");
             $("#nombre").focus();
+            event.preventDefault();
             return;
         }
 
 
         if (apellido.length >=3 && apellido.length <= 20) {
-            event.preventDefault();
             $("#error2").html("");
             console.log('apellido validado correctamente.')
         } else {
-            event.preventDefault();
             $("#error2").html("<p>El apellido debe tener entre 3 y 20 caracteres.</p>");
             $("#apellido").focus();
+            event.preventDefault();
             return;
         }
     
 
 
-        /*
-        if (dominio=="gmail.com") {
-            event.preventDefault();
-            $("#error3").html("");
+        
+        if(emailCorrecto == true) {
             console.log('email validado correctamente.')
         } else {
+            $("#error3").html('<p>Validando email...</p>');
             event.preventDefault();
-            $("#error3").html('<p>El email debe tener el dominio: "@gmail.com".</p>');
-            $("#email").focus();
-            dominio="";
             return;
         }
-        */
+        
 
 
 
         if (motivoContacto!="defoption") {
-            event.preventDefault();
             $("#error4").html("");
             console.log('Motivo validado correctamente.')
         } else {
-            event.preventDefault();
             $("#error4").html("<p>Debe seleccionar un motivo.</p>");
             $("#motivo-contacto").focus();
+            event.preventDefault();
             return;
         }
 
 
         if (whyContacto.length >=10 && whyContacto.length <= 200) {
-            event.preventDefault();
             $("#error5").html("");
             console.log('Mensaje contacto validado correctamente.')
         } else {
-            event.preventDefault();
             $("#error5").html("<p>El mensaje debe contener entre 10 y 200 caracteres.</p>");
             $("#why-contacto").focus();
+            event.preventDefault();
             return;
         }
 
-        
         alert("¡Se ha enviado tu mensaje correctamente!");
-        $("#nombre").val("");
-        $("#apellido").val("");
-        $("#email").val("");
-        $("#motivo-contacto").val("");
-        $("#why-contacto").val("");
-
-
-
     });
+
+
+
 
 
 $("#formulario-suscripcion").submit(function(event) {
     /*declarar variables*/
-    var nombre = $("#nombre").val();
+    var nombre = $("#nombre").val().trim();
     var email = $("#email").val();
     var edad = $("#edad").val();
     var genero = $("#genero").val();
@@ -213,50 +205,47 @@ $("#formulario-suscripcion").submit(function(event) {
 
     /*Validaciones*/
     if (nombre.length >=3 && nombre.length <= 20) {
-        event.preventDefault();
         $("#error1").html("");
         console.log('Nombre validado correctamente.')
     } else {
-        event.preventDefault();
         $("#error1").html("<p>El nombre debe tener entre 3 y 20 caracteres.</p>");
         $("#nombre").focus();
+        event.preventDefault();
+        return;
+    }
+
+
+    if(emailCorrecto == true) {
+        console.log('email validado correctamente.')
+    } else {
+        $("#error3").html('<p>Validando email...</p>');
+        event.preventDefault();
         return;
     }
 
 
     if (edad >= 18) {
-        event.preventDefault();
         $("#error2").html("");
         console.log('Edad validada correctamente.')
     } else {
-        event.preventDefault();
         $("#error2").html("<p>La edad debe ser mayor o igual a 18.</p>");
         $("#edad").focus();
+        event.preventDefault();
         return;
     }
 
 
     if (genero!="defoption") {
-        event.preventDefault();
         $("#error4").html("");
         console.log('Genero validado correctamente.')
     } else {
-        event.preventDefault();
         $("#error4").html("<p>Debe seleccionar un genero.</p>");
         $("#genero").focus();
+        event.preventDefault();
         return;
     }
 
-
-    
     alert("¡Usted se ha suscrito exitosamente.!");
-    $("#nombre").val("");
-    $("#email").val("");
-    $("#edad").val("");
-    $("#genero").val("");
-
-
-
 });
     });
 
