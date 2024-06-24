@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>RedWood</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="styleSheet" href="css/style.css">
+        <link rel="styleSheet" href="{% static 'css/style.css' %}">
     </head>
     <body>
         <div class="container-principal">
@@ -14,7 +15,7 @@
                     <nav class="navbar navbar-expand-lg">
                         <div class="container-fluid">
                             <div class="logo">
-                                    <img src="imgs/redwood logo a color completo transparente.png" alt="logo compania">
+                                <img src="{% static 'imgs/redwood logo a color completo transparente.png'%}" alt="logo compania">
                             </div>
                             <div class="col boton-desplegable">
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,13 +25,42 @@
                             <div class="collapse navbar-collapse links-barra-nav" id="navbarNav">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="index.html"><p class="fw-bold">Inicio</p></a>
+                                        <a class="nav-link" href="{% url 'inicio' %}"><p class="fw-bold">Inicio</p></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="quienes_somos.html"><p class="fw-bold">Quienes somos</p></a>
+                                        <a class="nav-link" href="{% url 'quienes_somos' %}"><p class="fw-bold">Quienes somos</p></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link active disabled" aria-disabled="true" href="">Galeria de Fotos</p></a>
+                                    </li>
+                                    <li class="nav-item dropstart">
+                                        {% if user.is_authenticated %}
+                                            <a class="nav-link dropdown-toggle " role="button" data-bs-toggle="dropdown" aria-expanded="false">{{user.username}}</a>
+                                        {% else %}
+                                            <a class="nav-link dropdown-toggle " role="button" data-bs-toggle="dropdown" aria-expanded="false">Ingresar</a>
+                                        {% endif %}
+                                        <ul class="dropdown-menu">
+                                        {% if user.is_authenticated %}   
+                                            <li>
+                                                <li><a class="dropdown-item" href="{% url 'perfil' %}" style="padding: 0 0 0 7px;">Ver perfil</a></li>
+                                            </li>
+                                            <hr class="dropdown-divider">
+                                            {% if user.is_superuser %}
+                                                <li><a class="dropdown-item" href="{% url 'crud' %}" style="padding: 0 0 0 7px;">Ir a crud</a></li>
+                                                <hr class="dropdown-divider">
+                                            {% endif %}
+                                            <li>
+                                                <form method="post" action="{% url 'logout' %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" style="border: none; background-color: white;">Cerrar sesión</button>
+                                                </form>
+                                            </li>
+                                        {% else %}
+                                        <li><a class="dropdown-item" href="{% url 'login' %}" style="padding: 0 0 0 7px;"">Iniciar sesión</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="{% url 'signup' %}" style="padding: 0 0 0 7px;">Registrarse</a></li>
+                                        {% endif %}                            
+                                        </ul>
                                     </li>
                                 </ul>
                             </div>
@@ -48,7 +78,7 @@
                         <div class="col-6 cuadro-foto">
                             <div class="foto">
                                 <div class="foto-img">
-                                    <img src="imgs/redwood 1.jpeg" alt="mueble 1" class="img-fluid">
+                                    <img src="{% static 'imgs/redwood 1.jpeg'%}" alt="mueble 1" class="img-fluid">
                                     <h3>estanteria de vinos de pared</h3>
                                 </div>
                                 <div class="pie">
@@ -60,7 +90,7 @@
                         <div class="col-6 cuadro-foto">
                             <div class="foto">
                                 <div class="foto-img">
-                                    <img src="imgs/redwood7.jpeg" alt="mueble 2" class="img-fluid">
+                                    <img src="{% static 'imgs/redwood7.jpeg'%}" alt="mueble 2" class="img-fluid">
                                     <h3>mueble de vino para mesa</h3>
                                 </div>
                                 <div class="pie">
@@ -72,7 +102,7 @@
                         <div class="col-6 cuadro-foto">
                             <div class="foto">
                                 <div class="foto-img">
-                                    <img src="imgs/redwood 3.jpeg" alt="mueble 3" class="img-fluid">
+                                    <img src="{% static 'imgs/redwood 3.jpeg'%}" alt="mueble 3" class="img-fluid">
                                     <h3>mueble de vinos</h3>
                                 </div>
                                 <div class="pie">
@@ -84,7 +114,7 @@
                         <div class="col-6 cuadro-foto">
                             <div class="foto">
                                 <div class="foto-img">
-                                    <img src="imgs/Redwood4.jpeg" alt="mueble 4" class="img-fluid">
+                                    <img src="{% static 'imgs/Redwood4.jpeg'%}" alt="mueble 4" class="img-fluid">
                                     <h3>repisa de vinos</h3>
                                 </div>
                                 <div class="pie">
@@ -96,7 +126,7 @@
                         <div class="col-6 cuadro-foto">
                             <div class="foto">
                                 <div class="foto-img">
-                                    <img src="imgs/redwood5.jpeg" alt="mueble 5" class="img-fluid">
+                                    <img src="{% static 'imgs/redwood5.jpeg'%}" alt="mueble 5" class="img-fluid">
                                     <h3>mueble con bobeda</h3>
                                 </div>
                                 <div class="pie">
@@ -108,7 +138,7 @@
                         <div class="col-6 cuadro-foto">
                             <div class="foto">
                                 <div class="foto-img">
-                                    <img src="imgs/redwood6.jpeg" alt="mueble 6" class="img-fluid">
+                                    <img src="{% static 'imgs/redwood6.jpeg'%}" alt="mueble 6" class="img-fluid">
                                     <h3>mueble blanco</h3>
                                 </div>
                                 <div class="pie">
@@ -150,6 +180,11 @@
                                         </select>
                                         <div id="error4" class="errores"></div>
                                     </div><br>
+                                    <div class="form-group campo">
+                                        <label for="telefono">Telefono: </label>
+                                        <input type="tel" id="telefono" class="form-control form-control-sm border border-dark-subtle" required>
+                                        <div id="error5" class="errores"></div>
+                                    </div><br>
                                     <div class="form-group">
                                         <button type="submit" id="enviar" class="form-control border border-dark-subtle ">Enviar</button>
                                     </div>
@@ -164,7 +199,7 @@
             <footer>
                 <div class="container-fluid footer">
                     <div class="rrss">
-                        <a href="https://www.instagram.com/redwood0507/"><img src="imgs/ig logo 2.png" alt="instagram"></a>
+                        <a href="https://www.instagram.com/redwood0507/"><img src="{% static 'imgs/ig logo 2.png'%}" alt="instagram"></a>
                     </div>
                     <div class="copy">
                         <u>Matias Castañeda - Alvaro Neira, @Copyrigth&copy; Derechos reservados.</u>
@@ -176,6 +211,6 @@
 
         <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="js/javascript.js"></script>
+        <script src="{% static 'js/javascript.js' %}"></script>
     </body>
 </html>

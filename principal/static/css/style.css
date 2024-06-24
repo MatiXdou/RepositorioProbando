@@ -227,9 +227,23 @@ main{
 }
 
 #genero{
-    max-width: 100px;
+    max-width:182px;
 }
 
 #edad{
     max-width: 182px;
+}
+
+#titulo_plist{
+    text-align: center;
+    padding: 20px 0 0 0;
+}
+
+#table-prod{
+    margin: 25px 0 0 0;
+    width: 90%;
+}
+
+#table-prod th{
+    width: 10%;
 }

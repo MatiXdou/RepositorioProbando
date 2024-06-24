@@ -7,6 +7,12 @@ $(document).ready(function() {
     var whyContacto;
     var formato;
     var dns;
+    var id_producto;
+    var nombreProd;
+    var descripcion;
+    var precio;
+    var stock;
+    var categoria;
     
 
 
@@ -121,6 +127,94 @@ $(document).ready(function() {
     });
 
 
+    $("#telefono").blur(function(){
+        telefonoCorrecto=false;
+        telefono = $("#telefono").val();
+        if(telefono.length == 11){
+            $.get("https://phonevalidation.abstractapi.com/v1/?api_key=ab52e8a5f07d4fc99631b5703a03ca11&phone="+telefono,
+                function(data){
+                    esValido = data.valid;
+                    if(esValido==true){
+                        $("#error5").html("");
+                        console.log('telefono validado correctamente.')
+                        telefonoCorrecto=true;
+                    } else {
+                        $("#error5").html('<p>El numero de telefono no es valido.</p>');
+                        $("#telefono").focus();
+                        telefonoCorrecto=false;
+                        return;
+                    }                    
+                });
+        } else{
+            $("#error5").html('<p>El numero de telefono debe tener 11 caracteres. e.g.: 56912345678.</p>');
+            $("#telefono").focus();
+            return;
+        }
+        console.log("telefono: "+telefonoCorrecto)
+
+    })
+
+    /* Validaciones del formulario añadir producto */
+    
+    $("#id_producto").blur(function(){
+        id_producto = $("#id_producto").val();
+        if (id_producto > 0) {
+            $("#error1").html("");
+            console.log('id producto validado correctamente.')
+        } else {
+            $("#error1").html("<p>El id del producto debe ser mayor a 0.</p>");
+            $("#id_producto").focus();
+            return;
+        }
+    });
+
+    $("#nombreProd").blur(function(){
+        nombreProd = $("#nombreProd").val().trim();
+        if (nombreProd.length >=3 && nombreProd.length <= 20) {
+            $("#error2").html("");
+            console.log('nombre de producto validado correctamente.')
+        } else {
+            $("#error2").html("<p>El nombre del producto debe tener entre 3 y 20 caracteres.</p>");
+            $("#nombreProd").focus();
+            return;
+        }
+    });
+
+    $("#descripcion").blur(function(){
+        descripcion = $("#descripcion").val().trim();
+        if (descripcion.length >=3 && descripcion.length <= 50) {
+            $("#error3").html("");
+            console.log('descripcion validada correctamente.')
+        } else {
+            $("#error3").html("<p>La descripcion del producto debe tener entre 3 y 50 caracteres.</p>");
+            $("#descripcion").focus();
+            return;
+        }
+    });
+
+    $("#precio").blur(function(){
+        precio = $("#precio").val();
+        if (precio > 0) {
+            $("#error4").html("");
+            console.log('precio validado correctamente.')
+        } else {
+            $("#error4").html("<p>El precio debe ser mayor a 0.</p>");
+            $("#precio").focus();
+            return;
+        }
+    });
+
+    $("#stock").blur(function(){
+        stock = $("#stock").val();
+        if (stock > 0) {
+            $("#error5").html("");
+            console.log('stock validado correctamente.')
+        } else {
+            $("#error5").html("<p>El stock debe ser mayor a 0.</p>");
+            $("#stock").focus();
+            return;
+        }
+    });
 
     /* Validaciones al enviar formulario */
     $("#formulario-contacto").submit(function(event){
@@ -248,8 +342,4 @@ $("#formulario-suscripcion").submit(function(event) {
     alert("¡Usted se ha suscrito exitosamente.!");
 });
     });
-
-
-
-
     
